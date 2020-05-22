@@ -5,6 +5,7 @@
  */
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -46,14 +47,15 @@ public class Menu extends javax.swing.JFrame {
         setLabel = new javax.swing.JLabel();
         openPathLabel = new javax.swing.JLabel();
         infoButton = new javax.swing.JButton();
+        openSuccess = new javax.swing.JLabel();
+        saveSuccess = new javax.swing.JLabel();
+        setSuccess = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Wireworld");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(52, 73, 94));
         setForeground(java.awt.Color.blue);
-        setMaximumSize(new java.awt.Dimension(500, 400));
-        setPreferredSize(new java.awt.Dimension(500, 400));
         setResizable(false);
 
         menuPanel.setBackground(new java.awt.Color(44, 62, 80));
@@ -103,6 +105,8 @@ public class Menu extends javax.swing.JFrame {
 
         openPathField.setEditable(false);
         openPathField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        openPathField.setMaximumSize(new java.awt.Dimension(120, 20));
+        openPathField.setMinimumSize(new java.awt.Dimension(120, 20));
         openPathField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openPathFieldActionPerformed(evt);
@@ -111,7 +115,14 @@ public class Menu extends javax.swing.JFrame {
 
         savePathField.setEditable(false);
         savePathField.setToolTipText("");
-        savePathField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        savePathField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        savePathField.setMaximumSize(new java.awt.Dimension(125, 20));
+        savePathField.setMinimumSize(new java.awt.Dimension(125, 20));
+        savePathField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                savePathFieldMouseEntered(evt);
+            }
+        });
 
         setField.setText("Type here ...");
         setField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,69 +160,90 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        openSuccess.setForeground(new java.awt.Color(0, 204, 51));
+        openSuccess.setText("  ");
+
+        saveSuccess.setForeground(new java.awt.Color(0, 204, 51));
+        saveSuccess.setText("  ");
+
+        setSuccess.setForeground(new java.awt.Color(0, 204, 51));
+        setSuccess.setText("   ");
+
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
                 menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(menuPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-                        .addGroup(menuPanelLayout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(openPathField)
-                                        .addComponent(openButton, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                        .addComponent(openPathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(36, 36, 36)
-                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                        .addComponent(savePathField)
-                                        .addComponent(savePathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(menuPanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(setField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(setButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(setLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
-                                                .addContainerGap(25, Short.MAX_VALUE))
+                                                .addContainerGap()
+                                                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(menuPanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(infoButton)
-                                                .addContainerGap())))
+                                                .addGap(25, 25, 25)
+                                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(openPathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(openPathField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(openButton, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                                                                .addGap(31, 31, 31)
+                                                                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(openSuccess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addGap(8, 8, 8)
+                                                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                                                                .addGap(40, 40, 40)
+                                                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(savePathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(savePathField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(menuPanelLayout.createSequentialGroup()
+                                                                .addGap(123, 123, 123)
+                                                                .addComponent(infoButton))
+                                                        .addGroup(menuPanelLayout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(setField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGroup(menuPanelLayout.createSequentialGroup()
+                                                                                .addComponent(saveSuccess)
+                                                                                .addGap(14, 14, 14)
+                                                                                .addComponent(setButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(setLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(setSuccess)))))
+                                .addContainerGap())
         );
         menuPanelLayout.setVerticalGroup(
                 menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(menuPanelLayout.createSequentialGroup()
                                 .addGap(38, 38, 38)
                                 .addComponent(titleLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(setLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(savePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(openPathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(menuPanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                                                .addComponent(openPathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(setLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(savePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(openPathField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(openPathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(savePathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(setField))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                                .addComponent(setField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(savePathField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
                                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(openButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(setButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(27, 27, 27)
+                                        .addComponent(setButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(setSuccess)
+                                        .addComponent(saveSuccess)
+                                        .addComponent(openSuccess))
+                                .addGap(22, 22, 22)
                                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(infoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,22 +254,27 @@ public class Menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>
 
     private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         System.out.println("Open");
+        openSuccess.setText("  ");
         JFileChooser chooseFile = new JFileChooser();
-
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text files", "txt");
+        chooseFile.setAcceptAllFileFilterUsed(false);
+        chooseFile.setFileFilter(filter);
         int result = chooseFile.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File file = chooseFile.getSelectedFile();
             filename = file.getAbsolutePath();
             openPathField.setText(filename);
+            openSuccess.setText("✓");
             //  openPathField.setToolTipText(filename);
         } else if (result == JFileChooser.CANCEL_OPTION) {
             System.out.println("Cancel was selected");
@@ -248,6 +285,7 @@ public class Menu extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         System.out.println("Save");
+        saveSuccess.setText("  ");
         JFileChooser saveFile = new JFileChooser();
         saveFile.setDialogTitle("Choose directory");
         saveFile.setCurrentDirectory(new java.io.File("."));
@@ -257,6 +295,7 @@ public class Menu extends javax.swing.JFrame {
             File file = saveFile.getCurrentDirectory();
             savename = file.getAbsolutePath();
             savePathField.setText(savename);
+            saveSuccess.setText("✓");
             //  openPathField.setToolTipText(filename);
         } else if (result == JFileChooser.CANCEL_OPTION) {
             System.out.println("Cancel was selected");
@@ -275,19 +314,33 @@ public class Menu extends javax.swing.JFrame {
     private void setButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //  System.out.println(setField.getText());
+        ErrorForm error = new ErrorForm();
+
+        setSuccess.setText("  ");
         if(setField.getText().equals(""))
         {
             System.out.println("pusto");
+            error.NewScreen("Iteration field is empty");
+
         }
         else if (setField.getText().equals("Type here ...")) {
+
             System.out.println("pusto");
+            error.NewScreen("Iteration field is empty");
+        }
+        else if(isNumeric(setField.getText()) == false)
+        {
+            System.out.println("String or Double");
+            error.NewScreen("Insertion is not integer");
+
         }
         else
         {
-
             setIterations = Integer.parseInt(setField.getText());
+            setSuccess.setText("✓");
             System.out.println(setIterations);
         }
+
     }
 
     private void setFieldActionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,12 +350,33 @@ public class Menu extends javax.swing.JFrame {
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        HelpForm help = new HelpForm();
+        help.newScreen();
 
+    }
+
+    private void savePathFieldMouseEntered(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
     }
 
     /**
      * @param args the command line arguments
      */
+
+    private static boolean isNumeric(String str)
+    {
+        boolean numeric = true;
+
+        try
+        {
+            int num = Integer.parseInt(str);
+        } catch (NumberFormatException e)
+        {
+            numeric = false;
+        }
+        return numeric;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -311,7 +385,7 @@ public class Menu extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Dark Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -326,12 +400,14 @@ public class Menu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Menu frame = new Menu();
                 frame.setVisible(true);
+
 
 
             }
@@ -344,12 +420,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton openButton;
     private javax.swing.JTextField openPathField;
     private javax.swing.JLabel openPathLabel;
+    private javax.swing.JLabel openSuccess;
     private javax.swing.JButton saveButton;
     private javax.swing.JTextField savePathField;
     private javax.swing.JLabel savePathLabel;
+    private javax.swing.JLabel saveSuccess;
     private javax.swing.JButton setButton;
     private javax.swing.JTextField setField;
     private javax.swing.JLabel setLabel;
+    private javax.swing.JLabel setSuccess;
     private javax.swing.JButton startButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration
