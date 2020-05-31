@@ -17,9 +17,41 @@ public class PngMaker {
         this.grid = grid;
     }
 
-    public void draw (int height, int width)
-    {
+    public void draw (int height, int width,int grid[][],String path, int numberOfIt) throws IOException {
+        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
+        Graphics2D g2d = bufferedImage.createGraphics();
+
+        // fill all the image with white
+        g2d.setColor(Color.black);
+        g2d.fillRect(0, 0, width, height);
+
+
+        for (int i = 0; i<width; i++ )
+        {
+            for(int j = 0; j<height;j++)
+            {
+                //(x,y,szerokosc,wysokosc)
+                if(grid[i][j] == 1) {
+                    g2d.setColor(Color.yellow);
+                    g2d.fillRect(i, j, 1, 1);
+                }
+                if(grid[i][j] == 2) {
+                    g2d.setColor(Color.red);
+                    g2d.fillRect(i, j, 1, 1);
+                }
+                if(grid[i][j] == 3) {
+                    g2d.setColor(Color.blue);
+                    g2d.fillRect(i, j, 1, 1);
+                }
+
+
+            }
+        }
+        String fullpath = path + String.valueOf(numberOfIt) + ".png";
+        File file = new File(fullpath);
+        //przetwarzane image, format, plik
+        ImageIO.write(bufferedImage, "png", file);
     }
 
     public static void main(String[] args) throws IOException {
