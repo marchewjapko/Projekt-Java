@@ -48,7 +48,7 @@ public class HelpForm extends javax.swing.JFrame {
         jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("1. Choose file which you want to open. File must be .txt\n   and contains only numbers: 0,1,2,3,4\n\n2. Choose directory in which you want to receive the \n   results.\n\n3. Set number of iterations. Number must be integer!\n\n4. Press Start.\n\n5. See the results on screen and in the directory.");
+        jTextArea1.setText("1. Choose file which you want to open. File must be .txt\n   and contains only numbers: 0,1,2,3. You can also use\n   Board Creator to generate .txt file.\n\n2. Choose directory in which you want to receive the \n   results.\n\n3. Set number of iterations. Number must be integer!\n\n4. Press Start.\n\n5. See the results on screen and in the directory.");
         jScrollPane1.setViewportView(jTextArea1);
 
         closeButton.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N

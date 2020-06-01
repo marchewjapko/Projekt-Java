@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -118,6 +119,7 @@ public class Menu extends javax.swing.JFrame {
         openSuccess = new javax.swing.JLabel();
         saveSuccess = new javax.swing.JLabel();
         setSuccess = new javax.swing.JLabel();
+        boardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Wireworld");
@@ -172,7 +174,11 @@ public class Menu extends javax.swing.JFrame {
         startButton.setText("Start !");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startButtonActionPerformed(evt);
+                try {
+                    startButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -242,6 +248,16 @@ public class Menu extends javax.swing.JFrame {
         setSuccess.setForeground(new java.awt.Color(0, 204, 51));
         setSuccess.setText("   ");
 
+        boardButton.setBackground(new java.awt.Color(52, 73, 94));
+        boardButton.setFont(new java.awt.Font("Open Sans", 1, 11)); // NOI18N
+        boardButton.setForeground(new java.awt.Color(230, 126, 34));
+        boardButton.setText("Board Creator");
+        boardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boardButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
@@ -254,23 +270,25 @@ public class Menu extends javax.swing.JFrame {
                                         .addGroup(menuPanelLayout.createSequentialGroup()
                                                 .addGap(25, 25, 25)
                                                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(boardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(openPathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(openPathField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(openButton, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                                                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(openSuccess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addGap(8, 8, 8)
+                                                                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                                                                        .addGap(40, 40, 40)
+                                                                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(savePathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                .addComponent(savePathField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                                                                .addGap(31, 31, 31)
-                                                                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(openSuccess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addGap(8, 8, 8)
-                                                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                                                                .addGap(40, 40, 40)
-                                                                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(savePathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(savePathField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                                .addGap(39, 39, 39)
+                                                                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(menuPanelLayout.createSequentialGroup()
                                                                 .addGap(123, 123, 123)
@@ -315,7 +333,8 @@ public class Menu extends javax.swing.JFrame {
                                 .addGap(22, 22, 22)
                                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(infoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(boardButton))
                                 .addGap(12, 12, 12))
         );
 
@@ -508,14 +527,17 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_savePathFieldMouseEntered
 
-    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
         if(openState == true && saveState == true && setState == true)
         {
             System.out.println("Startujemy");
+            Algorythm algorythm = new Algorythm();
+            algorythm.gridChanger(setIterations, filename, savename);
             Generator generator = new Generator();
-            Generator.Generate("G:\\Studia Bartek\\Projekt-Java\\src\\Testy" , 4);
+            Generator.Generate(savename , setIterations+1);
             // generator.main(savePathField.getText());
+
         }
         else
         {
@@ -523,6 +545,11 @@ public class Menu extends javax.swing.JFrame {
             errorScreen.NewScreen("Not all options was declared corectly");
         }
     }//GEN-LAST:event_startButtonActionPerformed
+
+    private void boardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButtonActionPerformed
+        // TODO add your handling code here:
+        /* otworzymy sobie tutaj board*/
+    }//GEN-LAST:event_boardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -578,6 +605,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boardButton;
     private javax.swing.JButton infoButton;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton openButton;

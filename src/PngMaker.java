@@ -6,16 +6,15 @@ import java.io.IOException;
 
 public class PngMaker {
 
-    int width = 10;
-    int height = 10;
-    int grid[][];
-
-    public PngMaker(int height, int width, int grid[][])
-    {
-        this.height = height;
-        this.width = width;
-        this.grid = grid;
-    }
+    //int width = 10;
+    //int height = 10;
+    //int grid[][];
+    //public PngMaker(int height, int width, int grid[][])
+   // {
+   //     this.height = height;
+   //     this.width = width;
+   //     this.grid = grid;
+   // }
 
     public void draw (int height, int width,int grid[][],String path, int numberOfIt) throws IOException {
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -48,13 +47,14 @@ public class PngMaker {
 
             }
         }
-        String fullpath = path + String.valueOf(numberOfIt) + ".png";
+        String fullpath = path + "\\" + String.valueOf(numberOfIt) + ".png";
         File file = new File(fullpath);
         //przetwarzane image, format, plik
         ImageIO.write(bufferedImage, "png", file);
     }
 
-    public static void main(String[] args) throws IOException {
+    //public void main(String[] args) throws IOException {
+    /*public void painter(int width, int height, int numberOfIt) throws IOException {
 
         int width = 3;
         int height = 3;
@@ -103,7 +103,7 @@ public class PngMaker {
             }
         }
 
-        File file = new File("src\\Testy\\test.png");
+        File file = new File("src\\Testy\\"+ String.valueOf(numberOfIt));
         //przetwarzane image, format, plik
         ImageIO.write(bufferedImage, "png", file);
 
@@ -112,4 +112,5 @@ public class PngMaker {
 
 
     }
+    */
 }
