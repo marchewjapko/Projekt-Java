@@ -370,6 +370,7 @@ public class Menu extends javax.swing.JFrame {
         JFileChooser chooseFile = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Text files", "txt");
         chooseFile.setAcceptAllFileFilterUsed(false);
+        chooseFile.setCurrentDirectory(new java.io.File("."));
         chooseFile.setFileFilter(filter);
         int result = chooseFile.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
