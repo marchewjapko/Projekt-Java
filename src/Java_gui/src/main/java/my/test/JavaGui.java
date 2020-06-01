@@ -2,7 +2,7 @@ package my.test;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
@@ -1830,8 +1830,48 @@ public class JavaGui extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    private void changePanel(JPanel jpanel) //i z tym
+    {
+        if(jpanel.getBackground()==Color.BLACK)
+        {
+            jpanel.setBackground(Color.YELLOW);
+        }
+        else if(jpanel.getBackground()==Color.YELLOW)
+        {
+            jpanel.setBackground(Color.BLUE);
+        }
+        else if(jpanel.getBackground()==Color.BLUE)
+        {
+            jpanel.setBackground(Color.RED);
+        }
+        else if(jpanel.getBackground()==Color.RED)
+        {
+            jpanel.setBackground(Color.BLACK);
+        }
+    }
+
+    private void panelToText(JPanel panel, FileWriter myWriter) throws IOException { //sproboj z tym
+        if(panel.getBackground()==Color.BLACK)
+        {
+            myWriter.write("0");
+        }
+        if(panel.getBackground()==Color.YELLOW)
+        {
+            myWriter.write("1");
+        }
+        if(panel.getBackground()==Color.RED)
+        {
+            myWriter.write("2");
+        }
+        if(panel.getBackground()==Color.BLUE)
+        {
+            myWriter.write("3");
+        }
+    }
+
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        if(jPanel1.getBackground()==Color.BLACK)
+       /* if(jPanel1.getBackground()==Color.BLACK)
         {
             jPanel1.setBackground(Color.YELLOW);
         }
@@ -1847,6 +1887,9 @@ public class JavaGui extends javax.swing.JFrame
         {
             jPanel1.setBackground(Color.BLACK);
         }
+
+        */
+       changePanel(jPanel1);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
@@ -1878,6 +1921,9 @@ public class JavaGui extends javax.swing.JFrame
         try 
         {
             FileWriter myWriter = new FileWriter("Custom Board.txt");
+
+
+            /*
             if(jPanel1.getBackground()==Color.BLACK)
             {
                     myWriter.write("0");
@@ -3078,6 +3124,8 @@ public class JavaGui extends javax.swing.JFrame
             {
                     myWriter.write("3\n");
             }
+
+             */
             jDialog1.setVisible(rootPaneCheckingEnabled);
             /*for(int i=1; i<=75; i++)
             {
