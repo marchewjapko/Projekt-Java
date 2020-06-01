@@ -1,17 +1,12 @@
-package my.test;
-
+import javax.swing.*;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import javax.swing.JFrame;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
-import java.awt.event.*;
-import java.awt.event.ActionListener;
 
-public class JavaGui extends javax.swing.JFrame {
+public class BoardCreator extends javax.swing.JFrame {
 
-    public JavaGui() {
+    public BoardCreator() {
         initComponents();
     }
 
@@ -101,14 +96,20 @@ public class JavaGui extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(327, 160));
+        jDialog1.setLocationRelativeTo(null);
+        jDialog1.setTitle("Success!");
+        jDialog1.setAlwaysOnTop(true);
+
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("File \"Custom Board.txt\" ");
 
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("has been created in \"src\"  folder");
+        jLabel2.setText("has been created");
+
 
         jButton3.setText("OK");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,6 +117,14 @@ public class JavaGui extends javax.swing.JFrame {
                 jButton3MouseClicked(evt);
             }
         });
+
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+
+
+       setLocationByPlatform(true);
+        setTitle("Board Creator");
+        setAlwaysOnTop(true);
+        setResizable(false);
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -143,7 +152,7 @@ public class JavaGui extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(854, 340));
         setMinimumSize(new java.awt.Dimension(854, 340));
 
@@ -1864,94 +1873,116 @@ public class JavaGui extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {                                      
         try {
-            File myObj = new File("Custom Board.txt");
-            myObj.createNewFile();
-        } catch (IOException e) {
-        }
-        try {
-            FileWriter myWriter = new FileWriter("Custom Board.txt");
-            panelToText(jPanel1, myWriter);
-            panelToText(jPanel2, myWriter);
-            panelToText(jPanel3, myWriter);
-            panelToText(jPanel4, myWriter);
-            panelToText(jPanel5, myWriter);
-            panelToText(jPanel6, myWriter);
-            panelToText(jPanel7, myWriter);
-            panelToText(jPanel8, myWriter);
-            panelToText(jPanel9, myWriter);
-            panelToText(jPanel10, myWriter);
-            panelToText(jPanel11, myWriter);
-            panelToText(jPanel12, myWriter);
-            panelToText(jPanel13, myWriter);
-            panelToText(jPanel14, myWriter);
-            panelToText(jPanel15, myWriter);
-            myWriter.write("\n");
-            panelToText(jPanel16, myWriter);
-            panelToText(jPanel17, myWriter);
-            panelToText(jPanel18, myWriter);
-            panelToText(jPanel19, myWriter);
-            panelToText(jPanel20, myWriter);
-            panelToText(jPanel21, myWriter);
-            panelToText(jPanel22, myWriter);
-            panelToText(jPanel23, myWriter);
-            panelToText(jPanel24, myWriter);
-            panelToText(jPanel25, myWriter);
-            panelToText(jPanel26, myWriter);
-            panelToText(jPanel27, myWriter);
-            panelToText(jPanel28, myWriter);
-            panelToText(jPanel29, myWriter);
-            panelToText(jPanel30, myWriter);
-            myWriter.write("\n");
-            panelToText(jPanel31, myWriter);
-            panelToText(jPanel32, myWriter);
-            panelToText(jPanel33, myWriter);
-            panelToText(jPanel34, myWriter);
-            panelToText(jPanel35, myWriter);
-            panelToText(jPanel36, myWriter);
-            panelToText(jPanel37, myWriter);
-            panelToText(jPanel38, myWriter);
-            panelToText(jPanel39, myWriter);
-            panelToText(jPanel40, myWriter);
-            panelToText(jPanel41, myWriter);
-            panelToText(jPanel42, myWriter);
-            panelToText(jPanel43, myWriter);
-            panelToText(jPanel44, myWriter);
-            panelToText(jPanel45, myWriter);
-            myWriter.write("\n");
-            panelToText(jPanel46, myWriter);
-            panelToText(jPanel47, myWriter);
-            panelToText(jPanel48, myWriter);
-            panelToText(jPanel49, myWriter);
-            panelToText(jPanel50, myWriter);
-            panelToText(jPanel51, myWriter);
-            panelToText(jPanel52, myWriter);
-            panelToText(jPanel53, myWriter);
-            panelToText(jPanel54, myWriter);
-            panelToText(jPanel55, myWriter);
-            panelToText(jPanel56, myWriter);
-            panelToText(jPanel57, myWriter);
-            panelToText(jPanel58, myWriter);
-            panelToText(jPanel59, myWriter);
-            panelToText(jPanel60, myWriter);
-            myWriter.write("\n");
-            panelToText(jPanel61, myWriter);
-            panelToText(jPanel62, myWriter);
-            panelToText(jPanel63, myWriter);
-            panelToText(jPanel64, myWriter);
-            panelToText(jPanel65, myWriter);
-            panelToText(jPanel66, myWriter);
-            panelToText(jPanel67, myWriter);
-            panelToText(jPanel68, myWriter);
-            panelToText(jPanel69, myWriter);
-            panelToText(jPanel70, myWriter);
-            panelToText(jPanel71, myWriter);
-            panelToText(jPanel72, myWriter);
-            panelToText(jPanel73, myWriter);
-            panelToText(jPanel74, myWriter);
-            panelToText(jPanel75, myWriter);
+            System.out.println("save board");
+            JFileChooser saveFile = new JFileChooser();
+            saveFile.setDialogTitle("Choose directory");
+            saveFile.setCurrentDirectory(new java.io.File("."));
+            saveFile.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int result = saveFile.showSaveDialog(this);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File file = saveFile.getSelectedFile();
+                System.out.println(file.getAbsolutePath());
+                String savename;
+                savename = file.getAbsolutePath() + "\\CustomBoard.txt";
 
-            jDialog1.setVisible(rootPaneCheckingEnabled);
-            myWriter.close();
+
+                File myObj = new File(savename);
+                myObj.createNewFile();
+
+                try {
+                    FileWriter myWriter = new FileWriter(savename);
+                    panelToText(jPanel1, myWriter);
+                    panelToText(jPanel2, myWriter);
+                    panelToText(jPanel3, myWriter);
+                    panelToText(jPanel4, myWriter);
+                    panelToText(jPanel5, myWriter);
+                    panelToText(jPanel6, myWriter);
+                    panelToText(jPanel7, myWriter);
+                    panelToText(jPanel8, myWriter);
+                    panelToText(jPanel9, myWriter);
+                    panelToText(jPanel10, myWriter);
+                    panelToText(jPanel11, myWriter);
+                    panelToText(jPanel12, myWriter);
+                    panelToText(jPanel13, myWriter);
+                    panelToText(jPanel14, myWriter);
+                    panelToText(jPanel15, myWriter);
+                    myWriter.write("\n");
+                    panelToText(jPanel16, myWriter);
+                    panelToText(jPanel17, myWriter);
+                    panelToText(jPanel18, myWriter);
+                    panelToText(jPanel19, myWriter);
+                    panelToText(jPanel20, myWriter);
+                    panelToText(jPanel21, myWriter);
+                    panelToText(jPanel22, myWriter);
+                    panelToText(jPanel23, myWriter);
+                    panelToText(jPanel24, myWriter);
+                    panelToText(jPanel25, myWriter);
+                    panelToText(jPanel26, myWriter);
+                    panelToText(jPanel27, myWriter);
+                    panelToText(jPanel28, myWriter);
+                    panelToText(jPanel29, myWriter);
+                    panelToText(jPanel30, myWriter);
+                    myWriter.write("\n");
+                    panelToText(jPanel31, myWriter);
+                    panelToText(jPanel32, myWriter);
+                    panelToText(jPanel33, myWriter);
+                    panelToText(jPanel34, myWriter);
+                    panelToText(jPanel35, myWriter);
+                    panelToText(jPanel36, myWriter);
+                    panelToText(jPanel37, myWriter);
+                    panelToText(jPanel38, myWriter);
+                    panelToText(jPanel39, myWriter);
+                    panelToText(jPanel40, myWriter);
+                    panelToText(jPanel41, myWriter);
+                    panelToText(jPanel42, myWriter);
+                    panelToText(jPanel43, myWriter);
+                    panelToText(jPanel44, myWriter);
+                    panelToText(jPanel45, myWriter);
+                    myWriter.write("\n");
+                    panelToText(jPanel46, myWriter);
+                    panelToText(jPanel47, myWriter);
+                    panelToText(jPanel48, myWriter);
+                    panelToText(jPanel49, myWriter);
+                    panelToText(jPanel50, myWriter);
+                    panelToText(jPanel51, myWriter);
+                    panelToText(jPanel52, myWriter);
+                    panelToText(jPanel53, myWriter);
+                    panelToText(jPanel54, myWriter);
+                    panelToText(jPanel55, myWriter);
+                    panelToText(jPanel56, myWriter);
+                    panelToText(jPanel57, myWriter);
+                    panelToText(jPanel58, myWriter);
+                    panelToText(jPanel59, myWriter);
+                    panelToText(jPanel60, myWriter);
+                    myWriter.write("\n");
+                    panelToText(jPanel61, myWriter);
+                    panelToText(jPanel62, myWriter);
+                    panelToText(jPanel63, myWriter);
+                    panelToText(jPanel64, myWriter);
+                    panelToText(jPanel65, myWriter);
+                    panelToText(jPanel66, myWriter);
+                    panelToText(jPanel67, myWriter);
+                    panelToText(jPanel68, myWriter);
+                    panelToText(jPanel69, myWriter);
+                    panelToText(jPanel70, myWriter);
+                    panelToText(jPanel71, myWriter);
+                    panelToText(jPanel72, myWriter);
+                    panelToText(jPanel73, myWriter);
+                    panelToText(jPanel74, myWriter);
+                    panelToText(jPanel75, myWriter);
+
+                    jDialog1.setVisible(rootPaneCheckingEnabled);
+                    myWriter.close();
+                } catch (IOException e) {
+                }
+
+            } else if (result == JFileChooser.CANCEL_OPTION) {
+                System.out.println("Cancel was selected");
+                ErrorForm error = new ErrorForm();
+                error.NewScreen("Error while saving");
+            }
+
+
         } catch (IOException e) {
         }
     }                                     
@@ -2226,6 +2257,7 @@ public class JavaGui extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {                                      
         jDialog1.setVisible(false);
+        dispose();
     }                                     
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {                                     
@@ -2260,7 +2292,7 @@ public class JavaGui extends javax.swing.JFrame {
         changePanel(jPanel61);
     }                                     
 
-    public static void main(String args[]) {
+    public static void newScreen() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -2269,19 +2301,20 @@ public class JavaGui extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JavaGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BoardCreator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JavaGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BoardCreator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JavaGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BoardCreator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JavaGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BoardCreator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JavaGui().setVisible(true);
+                new BoardCreator().setVisible(true);
             }
         });
+
     }
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;

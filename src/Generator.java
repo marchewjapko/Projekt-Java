@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 /**
  *
@@ -49,7 +49,7 @@ public class Generator extends javax.swing.JFrame {
         imagePanel = new javax.swing.JPanel();
         testLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Generations");
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(700, 700));
@@ -58,16 +58,20 @@ public class Generator extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(44, 62, 80));
 
-        prevButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        prevButton.setFont(new java.awt.Font("Open Sans", 1, 11)); // NOI18N
         prevButton.setText("Previous");
+        prevButton.setForeground(new java.awt.Color(230, 126, 34));
+        prevButton.setBackground(new java.awt.Color(52, 73, 94));
         prevButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prevButtonActionPerformed(evt);
             }
         });
 
-        nextButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        nextButton.setFont(new java.awt.Font("Open Sans", 1, 11)); // NOI18N
         nextButton.setText("Next");
+        nextButton.setBackground(new java.awt.Color(52, 73, 94));
+        nextButton.setForeground(new java.awt.Color(230, 126, 34));
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
@@ -82,12 +86,12 @@ public class Generator extends javax.swing.JFrame {
             }
         });
 
-        numberLabel.setFont(new java.awt.Font("Open Sans", 1, 14)); // NOI18N
+        numberLabel.setFont(new java.awt.Font("Open Sans", 1, 20)); // NOI18N
         numberLabel.setForeground(new java.awt.Color(255, 255, 255));
         numberLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numberLabel.setText("0");
 
-        imagePanel.setBackground(new java.awt.Color(255, 255, 255));
+        imagePanel.setBackground(new java.awt.Color(44, 62, 80));
         imagePanel.setMaximumSize(new java.awt.Dimension(550, 550));
         imagePanel.setMinimumSize(new java.awt.Dimension(550, 550));
 
@@ -308,7 +312,7 @@ public class Generator extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Dark Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

@@ -550,6 +550,9 @@ public class Menu extends javax.swing.JFrame {
     private void boardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButtonActionPerformed
         // TODO add your handling code here:
         /* otworzymy sobie tutaj board*/
+        BoardCreator board = new BoardCreator();
+        board.newScreen();
+
     }//GEN-LAST:event_boardButtonActionPerformed
 
     /**

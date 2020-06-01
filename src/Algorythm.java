@@ -68,7 +68,7 @@ public class Algorythm
             System.out.println();
             png.draw(grid.rowSize,grid.colSize,gridArray, outputPath, i+2);
             Grid.printGrid(gridArray);
-            String filename = outputPath + "\\gridArray_" + i+1 + ".txt";
+            String filename = outputPath + "\\gridArray_" + String.valueOf(i+1) + ".txt";
             grid.saveGridToFile(gridArray, filename);
         }
     }
