@@ -38,7 +38,7 @@ public class Grid
             iStart = 0;
             kEnd = 0;
         }
-        else if(current_row==grid[0].length && current_col==0) //Bottom left corner
+        else if(current_row==grid[0].length-1 && current_col==0) //Bottom left corner
         {
             iEnd = 0;
             kStart = 0;
