@@ -1,12 +1,17 @@
+import java.awt.image.ColorConvertOp;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Grid
 {
     public int rowSize;
     public int colSize;
-    public int [][] GetGridArray(int rowSize, int colSize)
+    public int [][] getGridArray(int rowSize, int colSize)
     {
         return new int[rowSize][colSize];
     }
-    protected static void PrintGrid(int[][] grid) //Prints out the board to standard output
+    protected static void printGrid(int[][] grid) //Prints out the board to standard output
     {
         for(int i = 0; i < grid[0].length; i++)
         {
@@ -15,6 +20,37 @@ public class Grid
                 System.out.print(grid[k][i] + "\t");
             }
             System.out.print("\n");
+        }
+    }
+    protected static void saveGridToFile(int[][] grid, String filename) //Prints out the board to standard output
+    {
+        try
+        {
+            File file = new File(filename);
+            if (file.createNewFile())
+            {
+                System.out.println("File created: " + file.getName());
+                try {
+                    FileWriter myWriter = new FileWriter(filename);
+                    for(int i = 0; i < grid[0].length; i++)
+                    {
+                        for(int k = 0; k < grid.length; k++)
+                        {
+                            myWriter.write(String.valueOf(grid[k][i]));
+                        }
+                        myWriter.write("\n");
+                    }
+                    myWriter.close();
+                    System.out.println("Success!");
+                } catch (IOException e) {
+                    System.out.println("Ups, something went wrong..");
+                    e.printStackTrace();
+                }
+            }
+        }
+        catch(IOException e)
+        {
+            System.out.println("Ups, something went wrong..");
         }
     }
     private static int HowManyAlive(int current_row, int current_col, int [][] grid) //Checks cell's neighbors
@@ -38,7 +74,7 @@ public class Grid
             iStart = 0;
             kEnd = 0;
         }
-        else if(current_row==grid[0].length && current_col==0) //Bottom left corner
+        else if(current_row==grid[0].length-1 && current_col==0) //Bottom left corner
         {
             iEnd = 0;
             kStart = 0;
